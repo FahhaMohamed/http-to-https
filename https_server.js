@@ -14,6 +14,7 @@ fs.writeFileSync("./cert/ssl.cert", ssl.cert);
 
 const PORT = 5000;
 
+
 const server = https.createServer({
     key: ssl.private,
     cert: ssl.cert
@@ -23,7 +24,7 @@ app.get("/", (req, res) => {
   res.status(200).json({
     status: true,
     message: "Response sent from HTTPS Server!"
-  });
+  })
 });
 
 app.post("/", (req, res) => {
