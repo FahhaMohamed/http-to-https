@@ -1,12 +1,16 @@
 const express = require("express");
 const https = require("https");
 const selfSignedCert = require("selfsigned");
+const fs = require("fs");
 const app = express();
 
 app.use(express.json());
 
 const attributes = [{ name: "commonName", value: "localhost" }];
 const ssl = selfSignedCert.generate(attributes, { days: 365 });
+
+fs.writeFileSync("./cert/ssl.key", ssl.private);
+fs.writeFileSync("./cert/ssl.cert", ssl.cert);
 
 const PORT = 5000;
 
