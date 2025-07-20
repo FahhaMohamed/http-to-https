@@ -3,13 +3,10 @@ const app = express();
 
 app.use(express.json());
 
-const PORT = 3000;
+const PORT = 4455;
 
 app.get("/", (req, res) => {
-  res.status(200).json({
-    status: true,
-    message: "Response sent from HTTP Server!",
-  });
+  res.send("Response sent from HTTP Server!")
 });
 
 app.post("/", (req, res) => {

@@ -8,7 +8,7 @@ app.use(express.json());
 const attributes = [{ name: "commonName", value: "localhost" }];
 const ssl = selfSignedCert.generate(attributes, { days: 365 });
 
-const PORT = 5000;
+const PORT = 5566;
 
 const server = https.createServer({
     key: ssl.private,
@@ -16,10 +16,7 @@ const server = https.createServer({
 }, app);
 
 app.get("/", (req, res) => {
-  res.status(200).json({
-    status: true,
-    message: "Response sent from HTTPS Server!"
-  });
+  res.send("Response sent from HTTPS Server!")
 });
 
 app.post("/", (req, res) => {
